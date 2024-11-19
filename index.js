@@ -1,4 +1,4 @@
-//index.js
+//cleaker/index.js
 /**
  * @module Index
  * @description
@@ -10,4 +10,3 @@
 
 //
 export { default } from './src/cleaker.js';
-console.log('cleaker loaded successfully.');

@@ -4,7 +4,6 @@
 
 # CLEAKER
 ##### cleaked (connected and recognized).
-### [Project Status : Experimental and Under Development, Subject to Major Changes]
 **Visit:** https://neurons.me to learn more.
 
 # README
@@ -16,23 +15,21 @@ Its role is to function as a **Digital Identifier (DID)** **Creator**;  making *
 npm i cleaker
 ```
 
-# Usage Example
-Currently under development.
-```javascript
-import { cleaker } from 'cleaker';
-const me = { /*  profile data */ };
-const ID = { /*  Network Identity Provider */ };
-// Generate a DID
-cleaker(me, ID); 
+`Cleaker` is a versatile tool for creating DIDs that are compatible with major blockchain networks.
+	•	Keccak-256 is the default algorithm, which aligns with Ethereum’s hashing for its blockchain.
+	•	You can still specify SHA-256 or DoubleSHA-256 if you need compatibility with Bitcoin.
 
-```
-
-By implementing both `SHA-256` and `Keccak-256`, `cleaker` becomes a versatile tool for creating DIDs that are compatible with major blockchain networks. This approach allows for the integration of **cleaker** with a variety of blockchain technologies and potentially opens up various use cases in the **blockchain domain.**
+This design gives you the flexibility to focus on Ethereum by default while still supporting other networks when necessary.
 
 # Getting Cleaked.
 
-##### usrme.cleaker.me
+The cleak essentially performs a series of context-building steps:
+	•	Define the Space (domain): The root domain (cleaker.me) sets the overall environment.
+	•	Identify the Space Owner (subdomain): The subdomain identifies the owner or focus of the space, which could represent a profile, a specific user, or a namespace.
+	•	Establish Active User Identity (session): The session, retrieved from a JWT or similar token, tells Cleaker who is currently interacting with the space, enabling actions based on this specific user’s permissions.
 
+
+##### usrme.cleaker.me
 The server acts as a **channel** for these functionalities over the network.
 
 **Subdomains** are a way to create a **unique URL** for each user. This is done by creating a **wildcard DNS record that points all subdomains to the same server.** Our server (https://cleaker.me) then parses the subdomain and uses it to identify the user. Any server can be setup.
@@ -44,22 +41,20 @@ The server acts as a **channel** for these functionalities over the network.
 
 ----------
 # About All.This
-
-## Modular Data Structures:
+###### Modular Data Structures
 **[this.me](https://suign.github.io/this.me)  - [this.audio](https://suign.github.io/this.audio) - [this.text](https://suign.github.io/this.text) - [this.wallet](https://suign.github.io/this.wallet) - [this.img](https://suign.github.io/this.img) - [this.pixel](https://suign.github.io/Pixels) - [be.this](https://suign.github.io/be.this) - [this.DOM](https://suign.github.io/this.DOM) - [this.env](https://suign.github.io/this.env/) - [this.GUI](https://suign.github.io/this.GUI) - [this.be](https://suign.github.io/this.be) - [this.video](https://suign.github.io/this.video) - [this.atom](https://suign.github.io/this.atom) - [this.dictionaries](https://suign.github.io/this.dictionaries/)**
-**Each module** in **[all.this](https://neurons.me/all-this)** represents a specific **datastructure**. These classes encapsulate the functionalities and **data specific to their domain.**
 
-## **Utils**
-**[all.this](https://neurons.me/all-this)** not only aggregates these modules but also provides utilities to facilitate the integration, management, and enhancement of these data structures. **For example:**
-*The integration with [cleaker](https://suign.github.io/cleaker/) ensures each module instance has a **unique cryptographic identity**, enhancing security and data integrity.*
+These classes encapsulate the functionalities to **domain-specific data.**
 
-### Neurons.me Ecosystem Glossary:
-visit: [Neurons.me Glossary](https://suign.github.io/neurons.me/Glossary) 
-## License & Policies
+## Neurons.me
+### License & Policies
 - **License**: MIT License (see LICENSE for details).
+
 - **Privacy Policy**: Respects user privacy; no collection/storage of personal data.
-- **Terms of Usage**: Use responsibly. No guarantees/warranties provided. [Terms](https://www.neurons.me/terms-of-use) | [Privacy](https://www.neurons.me/privacy-policy)
-  **Learn more** at https://neurons.me
-  **Author:** SuiGn
-  [By neurons.me](https://neurons.me)
-  <img src="https://suign.github.io/neurons.me/neurons_logo.png" alt="neurons.me logo" width="123" height="123" style="width123px; height:123px;">
+
+- **Terms of Usage**: Use responsibly. No guarantees/warranties provided. 
+  [Terms](https://www.neurons.me/terms-of-use) | [Privacy](https://www.neurons.me/privacy-policy)
+  [neurons.me](https://neurons.me)
+
+  <img src="https://suign.github.io/assets/imgs/neurons_me_logo.png" alt="neurons.me logo" width="89">
+
