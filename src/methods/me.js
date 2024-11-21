@@ -1,6 +1,7 @@
-//clekaer/src/methods/me.js
+//cleaker/src/methods/me.js
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+
 /**
  * .me: Handles identity logging and context establishment for space, user, and event requests.
  * Logs the identity in the ledger on the provided port and v.path URL.
@@ -8,7 +9,8 @@ import axios from 'axios';
  * @param {string} options.ledger - The ledger API endpoint (v.path URL)
  * @param {string} options.jwtCookieName - The name of the JWT cookie to use for user identity
  * @param {boolean} options.requireAuth - Set to true if user authentication is required
- * @returns {Function} Express middleware for handling space, request, and user identity. */
+ * @returns {Function} Express middleware for handling space, request, and user identity.
+ */
 function me({ ledger, jwtCookieName = 'jwt', requireAuth = false } = {}) {
   return async (req, res, next) => {
     const hostname = req.hostname || req.headers['host'];
@@ -40,7 +42,7 @@ function me({ ledger, jwtCookieName = 'jwt', requireAuth = false } = {}) {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         ledgerEntry.activeUser = {
           userId: decoded.userId,
-          email: decoded.email, //Assuming email or username is included in the token
+          email: decoded.email, // Assuming email or username is included in the token
         };
         req.user = ledgerEntry.activeUser;
         // Logging user identity details
@@ -55,14 +57,21 @@ function me({ ledger, jwtCookieName = 'jwt', requireAuth = false } = {}) {
     } else if (requireAuth) {
       return res.status(401).send('Unauthorized');
     }
-    // 3. Log Identity and Context to the Ledger
-    try {
-      await axios.post(ledger, ledgerEntry);
-      console.log(`Logged identity in ledger for space: ${space} and user: ${req.user?.userId || 'unknown'}`);
-    } catch (error) {
-      console.error('Error logging to ledger:', error);
+
+    // 3. Log Identity and Context to the Ledger (if ledger is provided)
+    if (ledger) {
+      try {
+        await axios.post(ledger, ledgerEntry);
+        console.log(`Logged identity in ledger for space: ${space} and user: ${req.user?.userId || 'unknown'}`);
+      } catch (error) {
+        console.error('Error logging to ledger:', error.message);
+      }
+    } else {
+      console.log('Ledger logging skipped: No ledger URL provided.');
     }
+
     next();
   };
 }
+
 export default me;

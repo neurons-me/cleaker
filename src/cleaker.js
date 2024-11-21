@@ -1,16 +1,14 @@
 import crypto from 'crypto';
 import pkg from 'js-sha3';
 import axios from 'axios';
-import me from './me.js'; // Import the me module
-import salt from './salt.js'; // Import the salt module
-import generatePassword from './generatePassword.js'; // Import generatePassword
-import validateUsername from './validateUsername.js'; // Import validateUsername
-import validateEmail from './validateEmail.js'; // Import validateEmail
-import verifyPassword from './verifyPassword.js'; // Import verifyPassword
-import randomToken from './randomToken.js'; // Import randomToken
-
+import me from './methods/me.js'; // Import the me module
+import salt from './methods/salt.js'; // Import the salt module
+import generatePassword from './methods/generatePassword.js'; // Import generatePassword
+import validateUsername from './methods/validateUsername.js'; // Import validateUsername
+import validateEmail from './methods/validateEmail.js'; // Import validateEmail
+import verifyPassword from './methods/verifyPassword.js'; // Import verifyPassword
+import randomToken from './methods/randomToken.js'; // Import randomToken
 const { keccak256 } = pkg;
-
 class Cleaker {
   constructor(ledger) { 
     this.ledger = ledger;

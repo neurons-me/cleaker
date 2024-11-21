@@ -1,6 +1,6 @@
 {
     "name": "cleaker",
-    "version": "2.6.55",
+    "version": "2.6.58",
     "description": "Connecting all dots within a fixed distance.",
     "main": "index.js",
     "type": "module",
