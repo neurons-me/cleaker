@@ -1,6 +1,7 @@
 {
     "name": "cleaker",
     "version": "2.6.58",
+    "types": "./src/cleaker.d.ts",
     "description": "Connecting all dots within a fixed distance.",
     "main": "index.js",
     "type": "module",
@@ -30,5 +31,8 @@
     "author": "Sui Gn",
     "license": "MIT License",
     "repoType": "NPM Package",
-    "category": "utils"
+    "category": "utils",
+    "devDependencies": {
+        "typescript": "^5.7.2"
+    }
 }
